@@ -39,7 +39,10 @@ app.heightLineChart = 200 - app.margin.top - app.margin.bottom
 
 app.showMobileWarning = function() {
   if (md.mobile()) {
-    d3.select("div#alert").style("display", "block")
+    var alert = d3.select("div#alert")
+    alert.style("display", "block").on("click", function(){
+      alert.style("display", "none")
+    })
   }
 }
 
