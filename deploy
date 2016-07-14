@@ -1,5 +1,7 @@
 #!/bin/bash
 
+export PATH="./node_modules/.bin:$PATH"
+
 browserify looped.js -o public/looped/bundle.js -v
 browserify concentration-global-nh-sh.js -o public/concentration-global-nh-sh/bundle.js -v
 
