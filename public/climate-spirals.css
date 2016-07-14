@@ -1,0 +1,272 @@
+/* IcoMoon generated font with icons */
+@font-face {
+  font-family: 'icomoon';
+  src: url('fonts/icomoon.eot?llslek');
+  src:
+    url('fonts/icomoon.eot?llslek#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?llslek') format('truetype'),
+    url('fonts/icomoon.woff?llslek') format('woff'),
+    url('fonts/icomoon.svg?llslek#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="icon-"],
+[class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-menu::before {
+    content: "\e900";
+}
+
+.icon-play3::before {
+    content: "\ea1c";
+}
+
+.icon-pause2::before {
+    content: "\ea1d";
+}
+
+/* Adopted from Slideout.js CSS */
+nav {
+  background-color: #161616;
+}
+
+.menu-header-title a,
+.menu-section-list a {
+  color: darkgray;
+  text-decoration: none;
+}
+
+.menu-header-title a:hover,
+.menu-selection-list a:hover {
+  text-decoration: underline;
+}
+
+.menu-header {
+  border-bottom: 1px solid #2a2d2f;
+  padding: 20px 0 20px 60px;
+  background-size: 32px;
+}
+
+.menu-header-title {
+  font-weight: 400;
+  letter-spacing: 0.5px;
+  margin: 0;
+}
+
+.menu-section {
+  margin: 25px 0;
+}
+
+.menu-section-title {
+  text-transform: uppercase;
+  color: #85888d;
+  font-weight: 200;
+  font-size: 13px;
+  letter-spacing: 1px;
+  padding: 0 20px;
+  margin:0;
+}
+
+.menu-section-list {
+  padding:0;
+  margin: 10px 0;
+  list-style:none;
+}
+
+.menu-section-list a {
+  display: block;
+  padding: 10px 20px;
+}
+
+.menu-section-list a:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  text-decoration: none;
+}
+
+/* Custom styling */
+body {
+  color: gray;
+  background-color: #090909;
+  width: 100%
+  display: block;
+}
+
+.slideout-menu {
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 0;
+  width: 256px;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  display: none;
+}
+
+.slideout-menu h2 {
+  color: #090909;
+}
+
+.slideout-panel {
+  position: relative;
+  z-index: 1;
+}
+
+.slideout-open,
+.slideout-open body,
+.slideout-open .slideout-panel {
+  overflow: hidden;
+}
+
+.slideout-open .slideout-menu {
+  display: block;
+}
+
+svg,
+span.icons {
+  cursor: pointer;
+}
+
+span.icons {
+  font-size: 35px;
+  padding-top: 5px;
+  margin-left: 10px;
+  position: fixed;
+  left: 0;
+}
+
+#alert {
+  display: none;
+  padding: 20px;
+  background-color: #bddf26;
+  margin-bottom: 15px;
+}
+
+#alert h1 {
+  color: black;
+}
+
+#viz {
+  display: flex;
+  display: -webkit-flex;
+}
+
+.col {
+  margin: 0 auto;
+  background-color: #090909;
+  display: inline-block;
+  padding: 0 5px;
+  min-width: 300px;
+}
+
+h2,
+h3 {
+  color: #999999;
+}
+
+h2 {
+  font-size: 16px;
+  text-align: center;
+  margin-bottom: -10px;
+}
+
+h3 {
+  font-size: 13px;
+  padding-left: 10px;
+}
+
+text.hover-text {
+  fill: gray;
+  font: 12px sans-serif;
+}
+
+.axis text {
+  font: 12px sans-serif;
+  fill: gray;
+}
+
+.axis line {
+  stroke: gray;
+}
+
+.axis circle {
+  stroke: gray;
+  fill: none;
+  stroke-dasharray: 1,4;
+}
+
+.axis circle.red {
+  stroke: #990000;
+  stroke-dasharray: none;
+}
+
+.axis path {
+  fill: none;
+  stroke: gray;
+  shape-rendering: crispEdges;
+}
+
+.axis :last-of-type circle {
+  stroke: white;
+  stroke-dasharray: none;
+}
+
+div#emissions-linear svg path.period {
+  stroke-width: 4px;
+}
+
+.year {
+  fill: gray;
+}
+
+.chart-linear {
+  margin-top: -5px;
+}
+
+svg text {
+  color: lightgray;
+}
+
+.budget-line {
+  fill: gray;
+  font-size: 11px;
+}
+
+.sources {
+  text-align: center;
+  font-size: 13px;
+  padding-left: 10px;
+}
+
+.sources a {
+  color: #2a788e;
+}
+
+hr {
+  border: 0;
+  border-top: 1px solid #2a2d2f;
+  width: 40%;
+  margin: 20px auto 0 auto;
+}
+
+#credits {
+  padding: 15px;
+}
+
+.col.hidden {
+  display: none;
+}

@@ -1,0 +1,36 @@
+#!/bin/bash
+
+browserify looped.js -o public/looped/bundle.js -v
+browserify concentration-global-nh-sh.js -o public/concentration-global-nh-sh/bundle.js -v
+
+browserify carbon-budget.js -o public/carbon-budget/bundle.js -v
+browserify concentration.js -o public/concentration/bundle.js
+browserify temperature.js -o public/temperature/bundle.js -v
+browserify from-emissions-to-global-warming.js -o public/from-emissions-to-global-warming/bundle.js -v
+browserify carbon-budget-temperature.js -o public/carbon-budget-temperature/bundle.js -v
+browserify concentration-temperature.js -o public/concentration-temperature/bundle.js -v
+browserify carbon-budget-concentration.js -o public/carbon-budget-concentration/bundle.js -v
+
+browserify carbon-budget-line-chart.js -o public/carbon-budget-line-chart/bundle.js -v
+browserify concentration-line-chart.js -o public/concentration-line-chart/bundle.js -v
+browserify temperature-line-chart.js -o public/temperature-line-chart/bundle.js -v
+browserify from-emissions-to-global-warming-line-chart.js -o public/from-emissions-to-global-warming-line-chart/bundle.js -v
+browserify carbon-budget-temperature-line-chart.js -o public/carbon-budget-temperature-line-chart/bundle.js -v
+browserify concentration-temperature-line-chart.js -o public/concentration-temperature-line-chart/bundle.js -v
+browserify carbon-budget-concentration-line-chart.js -o public/carbon-budget-concentration-line-chart/bundle.js -v
+
+node build_html.js
+
+for name in looped concentration-global-nh-sh carbon-budget temperature concentration from-emissions-to-global-warming carbon-budget-temperature concentration-temperature carbon-budget-concentration carbon-budget-line-chart temperature-line-chart concentration-line-chart from-emissions-to-global-warming-line-chart carbon-budget-temperature-line-chart concentration-temperature-line-chart carbon-budget-concentration-line-chart
+do
+
+  rm public/$name/bundle.*.js
+  CHECKSUM=($(md5sum public/$name/bundle.js))
+  echo $CHECKSUM
+  mv public/$name/bundle.js public/$name/bundle.$CHECKSUM.js
+
+  sed -i -e "s/bundle\.js/bundle.$CHECKSUM.js/g" public/$name/index.html
+
+  rsync -avz \
+        --delete-delay public/ ../openclimatedata.net/climate-spirals
+done
