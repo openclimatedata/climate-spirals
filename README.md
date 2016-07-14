@@ -1,5 +1,5 @@
 D3-based take on the Climate Spiral by [Ed Hawkins](https://twitter.com/ed_hawkins)
-(<http://www.climate-lab-book.ac.uk/spirals/>
+<http://www.climate-lab-book.ac.uk/spirals/>
 
 Extended with Carbon Budget and Concentration Spiral by
 
