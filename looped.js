@@ -7,7 +7,7 @@ var load = require("./load-data.js")
 var viz = require("./viz.js")
 
 app.showMobileWarning()
-app.width = 600
+app.width =  app.setWidth(1)
 app.height = app.width
 app.radius = app.width / 2 - 35
 
