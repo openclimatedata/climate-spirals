@@ -77,13 +77,13 @@ nav {
   font-size: 13px;
   letter-spacing: 1px;
   padding: 0 20px;
-  margin:0;
+  margin: 0;
 }
 
 .menu-section-list {
-  padding:0;
+  padding: 0;
   margin: 10px 0;
-  list-style:none;
+  list-style: none;
 }
 
 .menu-section-list a {
@@ -100,7 +100,7 @@ nav {
 body {
   color: gray;
   background-color: #090909;
-  width: 100%
+  width: 100%;
   display: block;
 }
 
@@ -260,7 +260,7 @@ hr {
   border: 0;
   border-top: 1px solid #2a2d2f;
   width: 40%;
-  margin: 20px auto 0 auto;
+  margin: 20px auto 0;
 }
 
 #credits {
