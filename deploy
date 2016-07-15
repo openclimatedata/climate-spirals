@@ -2,24 +2,24 @@
 
 export PATH="./node_modules/.bin:$PATH"
 
-browserify looped.js -o public/looped/bundle.js -v
-browserify concentration-global-nh-sh.js -o public/concentration-global-nh-sh/bundle.js -v
+browserify looped.js | uglifyjs > public/looped/bundle.js
+browserify concentration-global-nh-sh.js | uglifyjs > public/concentration-global-nh-sh/bundle.js
 
-browserify carbon-budget.js -o public/carbon-budget/bundle.js -v
-browserify concentration.js -o public/concentration/bundle.js
-browserify temperature.js -o public/temperature/bundle.js -v
-browserify from-emissions-to-global-warming.js -o public/from-emissions-to-global-warming/bundle.js -v
-browserify carbon-budget-temperature.js -o public/carbon-budget-temperature/bundle.js -v
-browserify concentration-temperature.js -o public/concentration-temperature/bundle.js -v
-browserify carbon-budget-concentration.js -o public/carbon-budget-concentration/bundle.js -v
+browserify carbon-budget.js | uglifyjs > public/carbon-budget/bundle.js
+browserify concentration.js | uglifyjs > public/concentration/bundle.js
+browserify temperature.js | uglifyjs > public/temperature/bundle.js
+browserify from-emissions-to-global-warming.js | uglifyjs > public/from-emissions-to-global-warming/bundle.js
+browserify carbon-budget-temperature.js | uglifyjs > public/carbon-budget-temperature/bundle.js
+browserify concentration-temperature.js | uglifyjs > public/concentration-temperature/bundle.js
+browserify carbon-budget-concentration.js | uglifyjs > public/carbon-budget-concentration/bundle.js
 
-browserify carbon-budget-line-chart.js -o public/carbon-budget-line-chart/bundle.js -v
-browserify concentration-line-chart.js -o public/concentration-line-chart/bundle.js -v
-browserify temperature-line-chart.js -o public/temperature-line-chart/bundle.js -v
-browserify from-emissions-to-global-warming-line-chart.js -o public/from-emissions-to-global-warming-line-chart/bundle.js -v
-browserify carbon-budget-temperature-line-chart.js -o public/carbon-budget-temperature-line-chart/bundle.js -v
-browserify concentration-temperature-line-chart.js -o public/concentration-temperature-line-chart/bundle.js -v
-browserify carbon-budget-concentration-line-chart.js -o public/carbon-budget-concentration-line-chart/bundle.js -v
+browserify carbon-budget-line-chart.js | uglifyjs > public/carbon-budget-line-chart/bundle.js
+browserify concentration-line-chart.js | uglifyjs > public/concentration-line-chart/bundle.js
+browserify temperature-line-chart.js | uglifyjs > public/temperature-line-chart/bundle.js
+browserify from-emissions-to-global-warming-line-chart.js | uglifyjs > public/from-emissions-to-global-warming-line-chart/bundle.js
+browserify carbon-budget-temperature-line-chart.js | uglifyjs > public/carbon-budget-temperature-line-chart/bundle.js
+browserify concentration-temperature-line-chart.js | uglifyjs > public/concentration-temperature-line-chart/bundle.js
+browserify carbon-budget-concentration-line-chart.js | uglifyjs > public/carbon-budget-concentration-line-chart/bundle.js
 
 node build_html.js
 
