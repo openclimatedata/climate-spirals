@@ -1,8 +1,5 @@
 "use strict"
 
-var MobileDetect = require("mobile-detect")
-var Slideout = require("slideout")
-
 var md = new MobileDetect(window.navigator.userAgent)
 
 var slideout = new Slideout({
