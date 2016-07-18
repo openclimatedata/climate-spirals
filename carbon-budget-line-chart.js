@@ -2,7 +2,7 @@
 
 var app = require("./app")
 
-app.width = 500
+app.width =  600
 app.height = app.width
 app.radius = app.width / 2 - 35
 
