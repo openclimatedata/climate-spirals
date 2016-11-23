@@ -16,4 +16,4 @@ wget -O mole_fraction_of_carbon_dioxide_in_air_input4MIPs_GHGConcentrations_CMIP
 
 echo HadCRUT temperature data
 echo ========================
-wget -O HadCRUT.4.4.0.0.monthly_ns_avg.txt 'http://www.metoffice.gov.uk/hadobs/hadcrut4/data/current/time_series/HadCRUT.4.4.0.0.monthly_ns_avg.txt'
+wget -O HadCRUT.4.5.0.0.monthly_ns_avg.txt 'http://www.metoffice.gov.uk/hadobs/hadcrut4/data/current/time_series/HadCRUT.4.5.0.0.monthly_ns_avg.txt'
