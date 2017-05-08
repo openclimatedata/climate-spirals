@@ -2,7 +2,9 @@
 node_modules
 data/mole_fraction_of_carbon_dioxide_in_air_input4MIPs_GHGConcentrations_CMIP_UoM-CMIP-1-1-0_gr3-GMNHSH_000001-201412.csv
 data/HadCRUT.4.4.0.0.monthly_ns_avg.txt
+data/HadCRUT.4.5.0.0.monthly_ns_avg.txt
 data/PRIMAP-hist_v1.0_14-Apr-2016.csv
+data/PRIMAP-hist_v1.1_06-Mar-2017.csv
 data/nation.1751_2013.csv
 bundle*.*
 public/*.js

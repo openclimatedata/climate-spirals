@@ -14,7 +14,7 @@ d3.select("#toggle-button").on("click", function() {
 })
 
 var app = {
-  color: d3.scaleSequential(d3.interpolateViridis).domain([1850, 2016]),
+  color: d3.scaleSequential(d3.interpolateViridis).domain([1850, 2017]),
   countDone: 0,
   dispatch: d3.dispatch("end", "show"),
   duration:  10,

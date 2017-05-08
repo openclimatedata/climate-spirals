@@ -8,7 +8,8 @@ wget -O nation.1751_2013.csv 'http://cdiac.ornl.gov/ftp/ndp030/CSV-FILES/nation.
 
 echo PRIMAP-hist
 echo ===========
-wget -O PRIMAP-hist_v1.0_14-Apr-2016.csv 'http://escidoc.gfz-potsdam.de/ir/item/escidoc:1504004/components/component/escidoc:1504006/content'
+wget -O PRIMAP-hist_v1.1.zip http://escidoc.gfz-potsdam.de/ir/item/escidoc:2086888/components/component/escidoc:2097890/content
+unzip PRIMAP-hist_v1.1.zip
 
 echo CMIP6 concentration data
 echo ========================
