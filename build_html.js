@@ -5,7 +5,7 @@ var env = new nunjucks.Environment(new nunjucks.FileSystemLoader("templates"))
 
 var write = function(template, title) {
   console.log("Writing " + template)
-  fs.writeFile(
+  fs.writeFileSync(
   "public/" + template + "/index.html",
     env.render(template + ".html", {title: title})
   )
