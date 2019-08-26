@@ -21,4 +21,4 @@ wget -O co2_mm_gl.txt 'ftp://aftp.cmdl.noaa.gov/products/trends/co2/co2_mm_gl.tx
 
 echo HadCRUT temperature data
 echo ========================
-wget -O HadCRUT.4.5.0.0.monthly_ns_avg.txt 'http://www.metoffice.gov.uk/hadobs/hadcrut4/data/current/time_series/HadCRUT.4.5.0.0.monthly_ns_avg.txt'
+wget -O HadCRUT.4.6.0.0.monthly_ns_avg.txt 'http://www.metoffice.gov.uk/hadobs/hadcrut4/data/current/time_series/HadCRUT.4.6.0.0.monthly_ns_avg.txt'
