@@ -14,17 +14,24 @@ module.exports = function radialChart() {
   var height = app.height
   chart.unit = ""
 
-  // Table 2.2 in the IPCC AR5 Synthesis Report:
-  // http://www.ipcc.ch/pdf/assessment-report/ar5/syr/SYR_AR5_FINAL_full_wcover.pdf
-  // Cumulative CO2 emissions from 2011 (Fractions of simulations: 66%)
-  // <2   1000 GtCO2
-  // <1.5  400 GtCO2
-  // PRIMAP-hist cumulative emissions 1850 - 1869: 47 Gt
-  // PRIMAP-hist + bunkers 1850 - 2010: 1990 Gt
-  // Total Budget 3000 Gt
+  // C.1.3 in the IPCC Special Report on 1.5 SPM
+  // https://report.ipcc.ch/sr15/pdf/sr15_spm_final.pdf
+  // accounting for permafrost thawing
+  // and
+  // Rogelj et al. 2019 https://doi.org/10.1038/s41586-019-1368-z
+  // Using a probability of limiting global warming of 66%
+  // <2    1070 GtCO2
+  // <1.5  320 GtCO2
+  //
+  // Cumulative emissions from 1850 are ~2300 GtCo2 for Fossil Fuel Industrial and
+  // Land Use in the Global Carbon Budget
+
+  var co2cumsum = 2300
+  var budget1_5 = 320
+  var budget2_0 = 1070
 
   var scaleCumulativeEmissions = d3.scaleLinear()
-    .domain([0, 2000 + 1000])
+    .domain([0, co2cumsum + budget2_0])
     .range([0, 2 * Math.PI])
 
   // Arc.
@@ -61,13 +68,13 @@ module.exports = function radialChart() {
     .attr("r", function(d) {return d})
 
     svg.append("path")
-      .attr("d", arc([{cumulative: 2000 + 400}, {cumulative: 2000 + 400}]))
+      .attr("d", arc([{cumulative: co2cumsum + budget1_5}, {cumulative: co2cumsum + budget1_5}]))
       .attr("stroke", app.red)
       .attr("stroke-width", 2)
       .attr("opacity", 0.5)
 
     svg.append("path")
-      .attr("d", arc([{cumulative: 2000 + 1000}, {cumulative: 2000 + 1000}]))
+      .attr("d", arc([{cumulative: co2cumsum + budget2_0}, {cumulative: co2cumsum + budget2_0}]))
       .attr("stroke", "gray")
       .attr("stroke-width", 1)
       .attr("opacity", 0.5)
@@ -76,8 +83,8 @@ module.exports = function radialChart() {
       .text("1.5 °C Budget")
       .attr("class", "budget-line")
       .attr("x", -0.95 * radius)
-      .attr("y", scaleCumulativeEmissions(2000 + 400))
-      .attr("transform", "rotate(16)")
+      .attr("y", scaleCumulativeEmissions(co2cumsum + budget1_5))
+      .attr("transform", "rotate(7)")
 
     svg.append("text")
       .text("2 °C Budget")
