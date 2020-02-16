@@ -3,7 +3,6 @@
 export PATH="./node_modules/.bin:$PATH"
 
 browserify looped.js | uglifyjs > public/looped/bundle.js
-browserify concentration-global-nh-sh.js | uglifyjs > public/concentration-global-nh-sh/bundle.js
 
 browserify carbon-budget.js | uglifyjs > public/carbon-budget/bundle.js
 browserify concentration.js | uglifyjs > public/concentration/bundle.js
@@ -23,7 +22,7 @@ browserify carbon-budget-concentration-line-chart.js | uglifyjs > public/carbon-
 
 node build_html.js
 
-for name in looped concentration-global-nh-sh carbon-budget temperature concentration from-emissions-to-global-warming carbon-budget-temperature concentration-temperature carbon-budget-concentration carbon-budget-line-chart temperature-line-chart concentration-line-chart from-emissions-to-global-warming-line-chart carbon-budget-temperature-line-chart concentration-temperature-line-chart carbon-budget-concentration-line-chart
+for name in looped carbon-budget temperature concentration from-emissions-to-global-warming carbon-budget-temperature concentration-temperature carbon-budget-concentration carbon-budget-line-chart temperature-line-chart concentration-line-chart from-emissions-to-global-warming-line-chart carbon-budget-temperature-line-chart concentration-temperature-line-chart carbon-budget-concentration-line-chart
 do
 
   rm public/$name/bundle.*.js
