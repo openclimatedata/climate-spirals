@@ -4,7 +4,6 @@ set -o errexit
 export PATH="./node_modules/.bin:$PATH"
 
 watchify looped.js -o public/looped/bundle.js -v --debug & \
-watchify concentration-global-nh-sh.js -o public/concentration-global-nh-sh/bundle.js -v --debug & \
 
 watchify carbon-budget.js -o public/carbon-budget/bundle.js -v --debug & \
 watchify concentration.js -o public/concentration/bundle.js -v --debug & \

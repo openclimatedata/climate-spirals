@@ -13,7 +13,6 @@ var write = function(template, title) {
 
 
 write("looped", "Looped Climate Spirals")
-write("concentration-global-nh-sh", "Northern & Southern Hemisphere Concentrations")
 
 write("carbon-budget", "Carbon Budget")
 write("concentration", "Concentration Spiral")
