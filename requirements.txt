@@ -2,3 +2,4 @@ notebook
 pandas
 scipy
 pandas_datapackage_reader
+matplotlib
