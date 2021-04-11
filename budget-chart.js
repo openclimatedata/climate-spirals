@@ -124,18 +124,30 @@ module.exports = function radialChart() {
       .attr("stroke-width", 2)
       .attr("opacity", medianOpacity)
 
-
     svg.append("text")
       .text("1.5 °C Budget")
+      .attr("class", "budget-line-large")
+      .attr("x", -0.95 * radius)
+      .attr("transform", "rotate(-16)")
+
+    svg.append("text")
+      .text("(33% - 67% range)")
       .attr("class", "budget-line")
       .attr("x", -0.95 * radius)
-      .attr("transform", "rotate(-15)")
+      .attr("transform", "rotate(-21)")
 
     svg.append("text")
       .text("2 °C Budget")
-      .attr("class", "budget-line")
+      .attr("class", "budget-line-large")
       .attr("x", -0.95 * radius)
       .attr("transform", "rotate(68)")
+
+    svg.append("text")
+      .text("(33% - 67% range)")
+      .attr("class", "budget-line")
+      .attr("x", -0.95 * radius)
+      .attr("transform", "rotate(61)")
+
 
     chart.text = svg.append("text")
       .attr("class", "year")

@@ -242,10 +242,16 @@ svg text {
   color: lightgray;
 }
 
+.budget-line-large {
+  fill: gray;
+  font-size: 15px;
+}
+
 .budget-line {
   fill: gray;
   font-size: 11px;
 }
+
 
 .sources {
   text-align: center;
