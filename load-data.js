@@ -8,7 +8,7 @@ function row(d) {
     value: +d.value
   }
   if (d.month) {
-    obj.month = +d.month
+    obj.month = +d.month - 1 // JS 0-based month
   }
   return obj
 }

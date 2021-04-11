@@ -63,7 +63,6 @@ module.exports = function radialChart() {
     var data = selection.data()[0]
     chart.data = data
     chart.lastYear = data[data.length - 1].year
-
     var svg = selection.append("svg")
       .attr("class", "circle")
       .attr("width", app.width)

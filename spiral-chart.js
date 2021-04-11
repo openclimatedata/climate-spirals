@@ -32,10 +32,12 @@ module.exports = function radialChart() {
 
   function chart(selection) {
     var data = selection.data()[0]
-    chart.data = data
-    chart.lastYear = data[data.length - 1].year
-    chart.lastMonth = data[data.length - 1].month
 
+    chart.data = data
+    // 2nd-to-last for interpolation
+    chart.lastYear = data[data.length - 2].year
+    chart.lastMonth = data[data.length - 2].month
+    console.log(chart.lastYear, chart.lastMonth)
     var svg = selection.append("svg")
       .attr("class", "circle")
       .attr("width", app.width)
@@ -77,7 +79,6 @@ module.exports = function radialChart() {
     data.forEach(function(item, index){
       if (index >= data.length - 1) { return }
       var currentData = data.slice(index, index + 2)
-      if (currentData[1].year > chart.lastYear) { return }
 
       var interpolate = d3.interpolate(
         currentData[0].value, currentData[1].value)
@@ -114,7 +115,7 @@ module.exports = function radialChart() {
       .attr("stroke-width", 10)
       .attr("stroke", "white")
       .transition().delay(function(d, index) {
-        if (d[0].month === 1) {
+        if (d[0].month === 0) {
           chart.text.transition().delay(index * duration).text(d[0].year)
         }
         return index * duration
@@ -123,6 +124,7 @@ module.exports = function radialChart() {
       .attr("stroke-width", 2)
       .attr("stroke", function(d) {return color(d[0].year)})
       .on("end", function(d){
+
         if ((d[d.length - 1].year === chart.lastYear) &&
             (d[d.length - 1].month === chart.lastMonth)) {
           chart.running = false
