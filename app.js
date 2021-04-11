@@ -23,7 +23,7 @@ var app = {
   formatYear: d3.timeFormat("%Y"),
   margin: {top: 0, right: 20, bottom: 20, left: 40},
   padding: 10,
-  red: "#990000",
+  red: "#CC0074",
   root: "../",
   running: false,
   viz: []

@@ -12,32 +12,46 @@ module.exports = function radialChart() {
   var radius = app.radius
   var width = app.width
   var height = app.height
-  chart.unit = ""
+  chart.unit = "GtCO2"
 
-  // C.1.3 in the IPCC Special Report on 1.5 SPM
-  // https://report.ipcc.ch/sr15/pdf/sr15_spm_final.pdf
-  // accounting for permafrost thawing
-  // and
-  // Rogelj et al. 2019 https://doi.org/10.1038/s41586-019-1368-z
-  // Using a probability of limiting global warming of 66%
-  // <2    1070 GtCO2
-  // <1.5  320 GtCO2
+  // Damon Matthews, H., Tokarska, K.B., Rogelj, J. et al. An integrated
+  // approach to quantifying uncertainties in the remaining carbon budget.
+  // Commun Earth Environ 2, 7 (2021).
+  // https:/doi.org/10.1038/s43247-020-00064-9
   //
-  // Cumulative emissions from 1850 are ~2300 GtCo2 for Fossil Fuel Industrial and
-  // Land Use in the Global Carbon Budget
+  // From abstract:
+  // 1.5 °C budgets(in GtCO2) Median 33%   67%
+  //                          440    230   670
+  //
+  // From Supplementary material
+  // 2.0 °C budgets(in GtCO2) Median 33%   67%
+  //                          1374   1110  1656
+  // Cumulative emissions from 1850 to 2019 are ~2410 GtCo2 for
+  // Fossil Fuel Industrial and Land Use in the Global Carbon Budget 20
 
-  var co2cumsum = 2300
-  var budget1_5 = 320
-  var budget2_0 = 1070
+  var co2cumsum = 2410 // until 2019 (incl.)
+  // budget in Matthews et al. (2021)from 2020
+  var budget1_5 = 440
+  var budget1_5_lower = 230
+  var budget1_5_upper= 670
+  var budget2_0 = 1375
+  var budget2_0_lower = 1110
+  var budget2_0_upper = 1655
+
+  var rangeOpacity = 0.35
+  var rangeLineOpacity = 0.6
+  var rangeStrokeWidth = 2
+  var rangeStrokeDashArray = ("5, 2")
+  var medianOpacity = 0.8
 
   var scaleCumulativeEmissions = d3.scaleLinear()
-    .domain([0, co2cumsum + budget2_0])
+    .domain([0, co2cumsum + budget2_0_upper])
     .range([0, 2 * Math.PI])
 
   // Arc.
   var arc = d3.arc()
     .innerRadius(0.2 * radius)
-    .outerRadius(radius + 1)
+    .outerRadius(radius - 2)
     .startAngle(function(d) {
       return scaleCumulativeEmissions(d[0].cumulative)
     })
@@ -67,31 +81,62 @@ module.exports = function radialChart() {
     grEmis.append("circle")
     .attr("r", function(d) {return d})
 
+    // 1.5 budget
     svg.append("path")
+      .attr("d", arc([{cumulative: co2cumsum + budget1_5_lower}, {cumulative: co2cumsum + budget1_5_upper}]))
+      .attr("stroke", app.red)
+      .attr("fill", app.red)
+      .attr("stroke-width", 2)
+      .attr("opacity", rangeOpacity)
+
+    svg.append("path")
+      .attr("d", arc([{cumulative: co2cumsum + budget1_5_lower}, {cumulative: co2cumsum + budget1_5_upper}]))
+      .attr("stroke", app.red)
+      .attr("stroke-width", rangeStrokeWidth)
+      .attr("opacity", rangeLineOpacity)
+      .style("stroke-dasharray", rangeStrokeDashArray)
+
+   svg.append("path")
       .attr("d", arc([{cumulative: co2cumsum + budget1_5}, {cumulative: co2cumsum + budget1_5}]))
       .attr("stroke", app.red)
+      .attr("fill", app.red)
       .attr("stroke-width", 2)
-      .attr("opacity", 0.5)
+      .attr("opacity", medianOpacity)
+
+    // 2.0 budget
+    svg.append("path")
+      .attr("d", arc([{cumulative: co2cumsum + budget2_0_lower}, {cumulative: co2cumsum + budget2_0_upper}]))
+      .attr("stroke", app.red)
+      .attr("fill", app.red)
+      .attr("stroke-width", 2)
+      .attr("opacity", rangeOpacity)
+
+    svg.append("path")
+      .attr("d", arc([{cumulative: co2cumsum + budget2_0_lower}, {cumulative: co2cumsum + budget2_0_upper}]))
+      .attr("stroke", app.red)
+      .attr("stroke-width", rangeStrokeWidth)
+      .attr("opacity", rangeLineOpacity)
+      .style("stroke-dasharray", rangeStrokeDashArray)
 
     svg.append("path")
       .attr("d", arc([{cumulative: co2cumsum + budget2_0}, {cumulative: co2cumsum + budget2_0}]))
-      .attr("stroke", "gray")
-      .attr("stroke-width", 1)
-      .attr("opacity", 0.5)
+      .attr("stroke", app.red)
+      .attr("fill", app.red)
+      .attr("stroke-width", 2)
+      .attr("opacity", medianOpacity)
+
 
     svg.append("text")
       .text("1.5 °C Budget")
       .attr("class", "budget-line")
       .attr("x", -0.95 * radius)
-      .attr("y", scaleCumulativeEmissions(co2cumsum + budget1_5))
-      .attr("transform", "rotate(7)")
+      .attr("transform", "rotate(-15)")
 
     svg.append("text")
       .text("2 °C Budget")
       .attr("class", "budget-line")
-      .attr("y", 15)
       .attr("x", -0.95 * radius)
-      .attr("transform", "rotate(90)")
+      .attr("transform", "rotate(68)")
 
     chart.text = svg.append("text")
       .attr("class", "year")
