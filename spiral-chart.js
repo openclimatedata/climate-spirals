@@ -21,7 +21,7 @@ module.exports = function radialChart() {
 
   var timescale = d3.scaleLinear()
     .range([2/12 * Math.PI , 2 * Math.PI])
-    .domain([1, 12])
+    .domain([0, 11])
 
   var r = d3.scaleLinear()
     .range([0, radius])
@@ -34,9 +34,8 @@ module.exports = function radialChart() {
     var data = selection.data()[0]
 
     chart.data = data
-    // 2nd-to-last for interpolation
-    chart.lastYear = data[data.length - 2].year
-    chart.lastMonth = data[data.length - 2].month
+    chart.lastYear = data[data.length - 1].year
+    chart.lastMonth = data[data.length - 1].month
     console.log(chart.lastYear, chart.lastMonth)
     var svg = selection.append("svg")
       .attr("class", "circle")
@@ -77,19 +76,23 @@ module.exports = function radialChart() {
 
 
     data.forEach(function(item, index){
-      if (index >= data.length - 1) { return }
-      var currentData = data.slice(index, index + 2)
+      if (index === 0) {return}
+      var currentData = data.slice(index - 1, index + 1)
 
       var interpolate = d3.interpolate(
         currentData[0].value, currentData[1].value)
-
       var points = 4
 
       var interpolatedData = d3.range(points + 1).map(function(index) {
-        var obj = {
+        var obj = index < 4 ? {
           "value": interpolate(index/points),
           "month": currentData[0].month + index/points,
           "year": currentData[0].year
+        } : {
+          "value": currentData[1].value,
+          "month": currentData[1].month,
+          "year": currentData[1].year
+
         }
         return obj
       })
