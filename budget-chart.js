@@ -14,29 +14,25 @@ module.exports = function radialChart() {
   var height = app.height
   chart.unit = "GtCO2"
 
-  // Damon Matthews, H., Tokarska, K.B., Rogelj, J. et al. An integrated
-  // approach to quantifying uncertainties in the remaining carbon budget.
-  // Commun Earth Environ 2, 7 (2021).
-  // https:/doi.org/10.1038/s43247-020-00064-9
+  // IPCC AR6 SPM
+  // https://www.ipcc.ch/report/ar6/wg1/downloads/report/IPCC_AR6_WGI_SPM.pdf
   //
-  // From abstract:
+  // IPCC defines as likelihood of limiting to temp., here inverted.
   // 1.5 °C budgets(in GtCO2) Median 33%   67%
-  //                          440    230   670
+  //                          500    400   650
   //
-  // From Supplementary material
   // 2.0 °C budgets(in GtCO2) Median 33%   67%
-  //                          1374   1110  1656
+  //                          1350   1700  1150
   // Cumulative emissions from 1850 to 2019 are ~2410 GtCo2 for
   // Fossil Fuel Industrial and Land Use in the Global Carbon Budget 20
 
-  var co2cumsum = 2410 // until 2019 (incl.)
-  // budget in Matthews et al. (2021)from 2020
-  var budget1_5 = 440
-  var budget1_5_lower = 230
-  var budget1_5_upper= 670
-  var budget2_0 = 1375
-  var budget2_0_lower = 1110
-  var budget2_0_upper = 1655
+  var co2cumsum = 2410 // IPCC AR6 2390 Gt CO2 (± 240; likely range)
+  var budget1_5 = 500
+  var budget1_5_lower = 400
+  var budget1_5_upper= 650
+  var budget2_0 = 1350
+  var budget2_0_lower = 1150
+  var budget2_0_upper = 1700
 
   var rangeOpacity = 0.35
   var rangeLineOpacity = 0.6
