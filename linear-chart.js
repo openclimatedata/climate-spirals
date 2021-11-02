@@ -20,7 +20,7 @@ module.exports = function emissionsChart() {
   }
 
   var xScale = d3.scaleTime()
-    .domain([new Date(1850, 0, 1), new Date(2021, 12, 31)])
+    .domain([new Date(1850, 0, 1), new Date(2022, 12, 31)])
     .range([padding, width])
     .clamp(true)
 
